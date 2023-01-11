@@ -1,0 +1,64 @@
+
+body {
+    font-family: 'Roboto';
+}
+
+.row.content {
+    height: 750px;
+}
+
+.left-side {
+    background-color: #FFF7D9;
+    height: 100%;
+}
+
+.right-side {
+    background-color: #304D6C;
+    height: 100%;
+}
+
+.logo-ui {
+    height: 100px;
+}
+
+.login-form {
+    font-size: 15px;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#loginFormButton {
+    margin-top: 3%;
+    background-color: #2C4662;
+}
+
+#textUnderForm {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#kontakFakultas {
+    font-size: 20px;
+}
+
+#kalenderAkademik {
+    background-color: white;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#kalenderAkademikContainer {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#pelayananAkun {
+    background-color: white;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#pelayananAkunContainer {
+    padding-left: 15%;
+    padding-right: 15%;
+}

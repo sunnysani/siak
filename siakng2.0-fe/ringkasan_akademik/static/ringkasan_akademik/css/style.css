@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,600,700&display=swap');
+
+:root {
+    --siakng-dark-blue: #304D6C;
+    --siakng-pale-blue: #E3F0FE;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 7fr 7fr auto;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 
+        " data   prestasi"
+        " data    nilai  "
+        "riwayat    .    ";
+
+    font-family: Poppins, Roboto;
+    margin: 20px 38px;
+}
+
+.grid > .content {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5px;
+    background-color: white;
+}
+
+.grid > .content > .header {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--siakng-dark-blue);
+    width: 100%;
+    padding: 20px;
+}
+
+.data-mahasiswa {
+    grid-area: data;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data-mahasiswa > .flex-row {
+    display: flex;
+    flex-direction: row;
+    padding: 3rem 0;
+}
+
+.data-mahasiswa > .flex-row > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.data-mahasiswa .profile-picture {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+}
+
+.data-mahasiswa > .name {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.data-mahasiswa .field {
+    text-align: center;
+    font-size: 20px;
+}
+
+.data-mahasiswa .field > span:first-child {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.data-mahasiswa .field > span:last-child {
+    font-weight: 400;
+}
+
+.riwayat-akademik {
+    grid-area: riwayat;
+}
+
+.riwayat-table {
+    margin: 10px 20px 20px 20px;
+    text-align: center;
+}
+
+.riwayat-table table {
+    width: 100%;
+}
+
+.riwayat-table th {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--siakng-dark-blue);
+}
+
+.riwayat-table td {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.riwayat-table td.message {
+    font-style: italic;
+}
+
+.riwayat-table tr.colored > td {
+    background-color: var(--siakng-pale-blue);
+}
+
+.riwayat-table td:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.riwayat-table td:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.riwayat-table tbody td {
+    padding: 11px 8px;
+}
+
+.keterangan {
+    background-color: lightgray;
+    margin: 0 20px 20px 20px;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.prestasi-akademik {
+    grid-area: prestasi;
+}
+
+.spinner-container {
+    width: 100%;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#prestasi-chart {
+    margin: 10px 28px 0 28px;
+}
+
+.statistik-nilai {
+    grid-area: nilai;
+}
+
+#nilai-chart {
+    margin: 10px 28px 0 28px;
+}
+
+@media screen and (max-width: 1384px) {
+    .grid {
+        grid-template-rows: 14fr auto 7fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "  data    data  "
+            "riwayat  riwayat"
+            "prestasi  nilai ";
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid > .header {
+        font-size: 20px;
+    }
+    
+    .data-mahasiswa .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .data-mahasiswa > .name {
+        font-size: 15px;
+    }
+
+    .data-mahasiswa > .flex-row {
+        margin: 0 10px;
+        padding: 1em 0;
+    }
+
+    .data-mahasiswa > .flex-row > * {
+        margin: 0 10px;
+    }
+
+    .data-mahasiswa .field {
+        font-size: 12px;
+    }
+
+    .data-mahasiswa .field > span:first-child {
+        margin-bottom: 5px;
+    }
+
+    .riwayat-table th {
+        font-size: 12px;
+    }
+    
+    .riwayat-table td {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .riwayat-table {
+        overflow-x: scroll;
+    }
+}

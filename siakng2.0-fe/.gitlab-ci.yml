@@ -1,0 +1,187 @@
+stages:
+  - test
+  - sonar
+  - deploy
+
+UnitTest:
+  image: python:3.6
+  stage: test
+  before_script:
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+    - python -m pip install --upgrade pip
+    - pip install -r requirements.txt
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - apt-get update -qq && apt-get install -y -qq unzip
+    - apt-get install -y google-chrome-stable
+    - apt-get install -y xvfb
+    - wget https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip
+    - unzip chromedriver_linux64.zip
+    - python manage.py collectstatic --no-input
+    - python manage.py runserver 8000 &
+  when: on_success
+  script:
+    - coverage run --omit=manage.py,*/env/*,*/migrations/* manage.py test
+    - coverage report -m
+    - coverage xml
+  artifacts:
+    paths:
+      - coverage.xml
+
+SonarScanner:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.login=$SONARQUBE_TOKEN
+      -Dsonar.projectKey=$SONARQUBE_PROJECT_KEY
+      -Dsonar.python.coverage.reportPaths=./coverage.xml
+      -Dsonar.exclusions=**/static/**/**,.gitlab-ci.yml,manage.py,siakng_new_fe/asgi.py,siakng_new_fe/wsgi.py
+  only:
+    - staging
+    - master
+
+SonarScannerFausta:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.sources=.
+      -Dsonar.login=873cb65663387174f805eb3bf585efc4ff5a69df
+      -Dsonar.projectKey=siakng2-fe
+      -Dsonar.python.coverage.reportPaths=./coverage.xml
+      -Dsonar.exclusions=**/static/**/**,.gitlab-ci.yml,manage.py,siakng_new_fe/asgi.py,siakng_new_fe/wsgi.py
+  only:
+    - pbi-6-drop-irs
+    - pbi-1-pengisian-irs
+    - pbi-5-add-irs
+    - pbi-4-pengecekan-irs
+    - pbi-9-ringkasan-akademik
+
+SonarScannerRafli:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.sources=.
+      -Dsonar.login=3689e7e88d931743b0aa4c2a4eb54da9470ede7e
+      -Dsonar.projectKey=fe-siak-rafli
+      -Dsonar.python.coverage.reportPaths=./coverage.xml
+      -Dsonar.exclusions=**/static/**/**,.gitlab-ci.yml,manage.py,siakng_new_fe/asgi.py,siakng_new_fe/wsgi.py
+  only:
+    - pbi-14-ringkasan_irs
+    - pbi-5-add_irs
+
+SonarScannerArya:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.sources=.
+      -Dsonar.login=0ae0a3a33d6d1d64f79be055b21aa038c34fbb92
+      -Dsonar.projectKey=siakng-fe-local
+      -Dsonar.python.coverage.reportPaths=./coverage.xml
+      -Dsonar.exclusions=**/static/**/**,.gitlab-ci.yml,manage.py,siakng_new_fe/asgi.py,siakng_new_fe/wsgi.py
+  only:
+    - pbi-2-authentication
+    - PBI-13-chat
+    - PBI-8-Notifikasi_lonceng
+    - django-pwa
+
+SonarScannerDewangga:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.sources=.
+      -Dsonar.login=63ef480719f1f41bba8943e72c140a95cc4f2ccc
+      -Dsonar.projectKey=sonar-scanner-dps-fe
+      -Dsonar.python.coverage.reportPaths=./coverage.xml
+      -Dsonar.exclusions=**/static/**/**,.gitlab-ci.yml,manage.py,siakng_new_fe/asgi.py,siakng_new_fe/wsgi.py
+  only:
+    - pbi-3-pengumuman
+    - pbi-7-pembayaran
+
+SonarScannerSani:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.sources=.
+      -Dsonar.login=aea4406c27d36a59805376e54c3bf1c8968612cf
+      -Dsonar.projectKey=siakng-fe-local
+      -Dsonar.python.coverage.reportPaths=./coverage.xml
+      -Dsonar.exclusions=**/static/**/**,.gitlab-ci.yml,manage.py,siakng_new_fe/asgi.py,siakng_new_fe/wsgi.py
+  only:
+    - pbi-12-jadwal
+    - pbi-1-pengisian-irs
+
+SonarScannerFadli:
+  image:
+    name: sonarsource/sonar-scanner-cli:4.6
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.sources=.
+      -Dsonar.login=c80646d9ebae468935a0dc5b541fb839c78468db
+      -Dsonar.projectKey=siakng-fe-fd-1
+      -Dsonar.python.coverage.reportPaths=./coverage.xml
+      -Dsonar.exclusions=**/static/**/**,.gitlab-ci.yml,manage.py,siakng_new_fe/asgi.py,siakng_new_fe/wsgi.py
+  only:
+    - pbi-10-riwayat_akademik
+    - pbi-16-ongoing_event
+
+development:
+  image: ruby:2.4
+  stage: deploy
+  before_script:
+    - gem install faraday -v 1.9.3
+    - gem install dpl
+    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  script:
+    - dpl --provider=heroku --app=$DEV_HEROKU_APPNAME --api-key=$HEROKU_APIKEY
+    - export HEROKU_API_KEY=$HEROKU_APIKEY
+    - heroku run --app $DEV_HEROKU_APPNAME migrate
+  environment:
+    name: development
+    url: $DEV_HEROKU_APP_HOST
+  only:
+    - staging
+
+production:
+  image: ruby:2.4
+  stage: deploy
+  before_script:
+    - gem install faraday -v 1.9.3
+    - gem install dpl
+    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  script:
+    - dpl --provider=heroku --app=$PROD_HEROKU_APPNAME --api-key=$HEROKU_APIKEY
+    - export HEROKU_API_KEY=$HEROKU_APIKEY
+    - heroku run --app $PROD_HEROKU_APPNAME migrate
+  environment:
+    name: production
+    url: $PROD_HEROKU_APP_HOST
+  only:
+    - master

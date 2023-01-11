@@ -1,0 +1,27 @@
+.placeholder.nama-lengkap {
+    width: 200px;
+}
+
+.placeholder.npm {
+    width: 100px;
+}
+
+.placeholder.prodi {
+    width: 150px;
+}
+
+.placeholder.semester, .placeholder.sks-lulus, .placeholder.total-mutu {
+    width: 50px;
+}
+
+.placeholder.ips, .placeholder.ipk {
+    width: 25px;
+}
+
+.placeholder.post-title {
+    width: 300px;
+}
+
+.placeholder.post-info {
+    width: 250px;
+}

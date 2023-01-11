@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% load pwa %}
+  {% progressive_web_app_meta %}
+  <head>
+    <title>Academic UI</title>
+    <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/id/thumb/0/0f/Makara_of_Universitas_Indonesia.svg/640px-Makara_of_Universitas_Indonesia.svg.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'authentication/css/authstyle.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">No. Tel. Fakultas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-borderless">
+                <caption></caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Nama Fakultas</th>
+                    <th scope="col">No. Telepon</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Fakultas Kedokteran</td>
+                    <td>+62-21 3912477</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Kedokteran Gigi</td>
+                    <td>+62-21 31930270</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Matematika & IPA</td>
+                    <td>+62-21 7863436</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Teknik</td>
+                    <td>+62-21 7863504</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Hukum</td>
+                    <td>+62-21 7270003</td>
+                  </tr>                  <tr>
+                    <td>Fakultas Ekonomi</td>
+                    <td>+62-21 7863571</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Ilmu Pengetahuan Budaya</td>
+                    <td>+62-21 7863528</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Psikologi</td>
+                    <td>+62-21 7270004</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Ilmu Sosial & Ilmu Politik</td>
+                    <td>+62-21 78849018</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Kesehatan Masyarakat</td>
+                    <td>+62-21 7270803</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Ilmu Komputer</td>
+                    <td>+62-21 7863419</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Ilmu Keperawatan</td>
+                    <td>+62-21 78849120</td>
+                  </tr>
+                  <tr>
+                    <td>Program Vokasi</td>
+                    <td>+62-21 29027481</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Farmasi</td>
+                    <td>+62-21-7270031</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas Ilmu Administrasi</td>
+                    <td>+62-21 78849087</td>
+                  </tr>
+                  <tr>
+                    <td>Sekolah Ilmu Lingkungan</td>
+                    <td>+62-21 3100059</td>
+                  </tr>
+                  <tr>
+                    <td>Sekolah Kajian Stratejik dan Global</td>
+                    <td>+62-21 3100059</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="loginGagalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginGagalModalLabel">Login Gagal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              Periksa kembali username dan password anda.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+      <div class="row content">
+        <div class="col-sm-5 left-side">
+          <div class="row justify-content-center">
+            <!-- Logo UI -->
+            <div class="col-sm-12 text-center mt-4 mb-4">
+              <img class="img-fluid logo-ui" src="{% static 'img/logo-ui.png' %}" alt="logo-ui"/>
+            </div>
+            <div class="col-sm-12 m-1">
+              <h1 class="text-center" style="font-size: 20px">
+                <strong>SISTEM INFORMASI AKADEMIK</strong>
+              </h1>
+              <h1 class="text-center" style="font-size: 18px; color: #2c4662; font-style: italic">
+                <strong>Next Generation</strong>
+              </h1>
+            </div>
+
+            <!-- Login Form -->
+            <div class="col-sm-12 m-4 login-form">
+              <form>
+                <div class="mb-3">
+                  <label for="inputUsername" class="form-label"><strong>Username</strong></label>
+                  <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                  <label for="inputPassword" class="form-label"><strong>Password</strong></label>
+                  <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <div class="d-grid gap-2 button-login">
+                  <button class="btn btn-primary" id="loginFormButton" type="button">
+                    Masuk
+                  </button>
+                </div>
+
+              </form>
+            </div>
+
+            <div class="col-sm-12 m-1" id="textUnderForm">
+              <p class="text-center" style="font-size: 12px; color: #ff1414">
+                <strong>Waspada terhadap pencurian password!</strong>
+              </p>
+              <p class="text-center" style="font-size: 12px; color: black">
+                <strong>
+                  Pastikan alamat yang anda tuju adalah
+                  https://academic.ui.ac.id
+                </strong>
+              </p>
+            </div>
+
+            <div class="col-sm-12 m-1" id="textUnderForm">
+              <p class="text-center" style="font-size: 12px; color: black">
+                Jika anda memiliki permasalahan yang berhubungan dengan
+                pembayaran, silakan menghubungi Direktorat Keuangan UI pada jam
+                kantor.
+              </p>
+            </div>
+
+            <div class="col-sm-12 m-1" id="textUnderForm">
+              <p class="text-center" style="font-size: 12px; color: black">
+                <strong>
+                  Direktorat Keuangan UI Gedung Rektorat Lantai 4, Kampus UI
+                  Depok
+                </strong>
+                <br/>
+                Tel. (62) (21) 78841818 or (62) (21) 7867222
+              </p>
+            </div>
+          </div>
+          <footer class="m-5">
+            <div class="col-sm-12 m-1" id="footer">
+              <p class="text-center" style="font-size: 10px; color: black">
+                © 2006-2022 Universitas Indonesia <br/>
+                Direktorat Sistem dan Teknologi Informasi (DSTI) UI
+              </p>
+            </div>
+          </footer>
+        </div>
+
+        <div class="col-sm-7 right-side">
+          <div class="row flex-row-reverse">
+            <div class="col-sm-3 mt-4" id="kontakFakultas">
+              <a href="#" style="text-decoration: none" id="modalButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div class="col">
+                  <p style="color: white"><strong>Kontak Fakultas</strong></p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="row justify-content-center" style="font-size: 12px;">
+            <div class="col-sm-12 m-3" id="kalenderAkademikContainer">
+              <div class="col-sm-12 p-2" id="kalenderAkademik">
+                <table class="table table-borderless">
+                  <caption></caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Kegiatan</th>
+                      <th scope="col">Tanggal Mulai</th>
+                      <th scope="col">Tanggal Berakhir</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Pengisian IRS (Isian Rencana Studi)</td>
+                      <td>18 Jan 2022</td>
+                      <td>28 Feb 2022</td>
+                    </tr>
+                    <tr>
+                      <td>Add/Drop IRS (Isian Rencana Studi)</td>
+                      <td>18 Jan 2022</td>
+                      <td>28 Feb 2022</td>
+                    </tr>
+                    <tr>
+                      <td>Batas Akhir Pengajuan Cuti</td>
+                      <td>18 Jan 2022</td>
+                      <td>28 Feb 2022</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="col-sm-12 m-4" id="pelayananAkunContainer">
+              <div class="col-sm-12 p-5" id="pelayananAkun">
+                <p class="text-center" style="font-size: 20px; color: #304d6c">
+                  <strong>Pelayanan Akun UI</strong>
+                </p>
+                <p class="text-center" style="font-size: 15px; color: #304d6c">
+                  <strong>
+                    Pengambilan account baru, penggantian password jika
+                    lupa/hilang, atau perpanjangan account untuk account yang
+                    sudah tidak aktif dapat dilakukan di:
+                  </strong>
+                </p>
+                <p class="text-center" style="font-size: 15px; color: #304d6c">
+                  <strong>Gedung DSTI Lantai 1 Dekat Fasilkom/Kampus UI Salemba</strong>
+                </p>
+                <p class="text-center" style="font-size: 15px; color: #304d6c">
+                  Senin-Jumat 09.00-16.00<br/>
+                  Tel. (62) (21) 31930308
+                </p>
+                <p class="text-center" style="font-size: 15px; color: #304d6c">
+                  <strong>
+                    Perpustakaan Lama lantai 2 Berdampingan dengan ITTC Kampus
+                    UI Depok
+                  </strong>
+                </p>
+                <p class="text-center" style="font-size: 15px; color: #304d6c">
+                  Senin-Jumat 09.00-16.00<br/>
+                  Tel. (62) (21) 7875963 tekan 0<br/>
+                  Email: support@ui.ac.id<br/>
+                  Website: http://dsti.ui.ac.id<br/>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="{% static 'authentication/js/auth.js'%}"></script>
+</html>

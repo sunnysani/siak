@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %} Pembayaran Akademik - SiakNG {% endblock title %}
+
+{% block head %}
+<link href="{% static 'pembayaran_akademik/css/style.css' %}" rel="stylesheet">
+<link href="{% static 'pembayaran_akademik/css/placeholder.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block page_title %} Pembayaran {% endblock %}
+{% block content %}
+<div class="payment">
+	<div class="latest-status">
+		<div class="header">Status Pembayaran Terbaru</div>
+		<div class="latest-status-table">
+			<div class="spinner-container">
+				<div class="spinner-border text-secondary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="deadline">
+		<div class="placeholder-glow"><span class="placeholder deadline bg-dark"></span></div>
+	</div>
+	<div class="history">
+		<div class="header" id="history-header">Riwayat Pembayaran</div>
+		<div class="table-wrapper">
+			<table id="history-table" aria-describedby="history-header">
+				<thead>
+					<tr>
+						<th scope="col">Periode</th>
+						<th scope="col">Mata Uang</th>
+						<th scope="col">Tagihan Periode Ini</th>
+						<th scope="col">Tunggakan</th>
+						<th scope="col">Denda</th>
+						<th scope="col">Total Tagihan</th>
+						<th scope="col">Total Pembayaran</th>
+						<th scope="col">Total Sisa Tagihan</th>
+						<th scope="col">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+						<td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="accordion accordion-flush" id="history-accordion">
+			<div class="spinner-border text-secondary" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="{% static 'pembayaran_akademik/js/script.js' %}"></script>
+{% endblock content %}

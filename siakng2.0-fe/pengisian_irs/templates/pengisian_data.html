@@ -1,0 +1,157 @@
+{% load static %}
+
+<div id="mobile-summary">
+  <div id="mobile-summary-left">
+    <h1>Matkul diambil: <span id="jumlah-matkul-mobile"></span> (<span id="jumlah-sks-mobile"></span> SKS)</h1>
+    <p id="status-pengecekan-mobile"></p>
+  </div>
+  <div id="mobile-summary-right">
+    <button id="simpan-mobile" disabled>
+      <div class="spinner-border text-light spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </button>
+  </div>
+</div>
+<div id="summary">
+  <div id="class">
+    <br>
+    <h4>Kelas Diambil</h4>
+    <div id="class-content">
+      <table id="summary-class-table" aria-describedby="ringkasan matkul table">
+        <thead>
+          <tr>
+            <th style="width:150px; margin-right: 20px;" scope="col">Kelas</th>
+            <th style="width:120px;" scope="col">Waktu</th>
+            <th style="width:120px;" scope="col">Pengajar</th>
+            <th style="width:20px;" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="summary-class-table-body">
+          <tr>
+            <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+            <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+            <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+            <td class="placeholder-glow"><span class="placeholder" style="width: 29px;"></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p id="jadwal-kosong" class="invisible">Pilih jadwal Anda dan lihat ringkasannya di sini</p>
+      <button id="simpan" class="btn" disabled>Simpan IRS</button>
+    </div>
+    <br>
+  </div>
+  <div id="pengecekan">
+    <br>
+    <h4>Pengecekan</h4>
+    <h5>Jumlah SKS: 
+      <span id="jumlah-sks">
+        <span class="placeholder-glow"><span class="placeholder" style="width: 30px"></span></span>
+      </span>
+    </h5>
+    <div id="summary-pengecekan">
+      <span class="placeholder-glow"><span class="placeholder col-6"></span></span>
+      <span class="placeholder-glow"><span class="placeholder col-3"></span></span>
+      <span class="placeholder-glow"><span class="placeholder col-5"></span></span>
+    </div>
+    <br>
+  </div>
+  <button id="toggle-summary">
+    <svg id="toggle-summary-svg" width="28" height="15" viewBox="0 0 28 15" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M25 12L17.5355 4.53554C15.5829 2.58292 12.4171 2.58291 10.4645 4.53553L3 12" stroke="#304D6C"
+        stroke-width="5" stroke-linecap="round" />
+    </svg>
+  </button>
+</div>
+<br>
+<div id="content-mobile" class="card p-4">
+  <br>
+  <div class="matkul-title"><h4 class="placeholder-glow"> <span class="placeholder" style="width: 200px"></span></h4></div>
+  <div class="mobile-card">
+      <br>
+      <div class="mobile-card-content">
+        <span class="placeholder-glow" style="position: absolute; left: 60px;">
+          <span class="placeholder" style="width: 20px; height: 20px;"></span>
+        </span>
+        <h5 class="placeholder-glow">
+          <span class="placeholder col-2"></span>&nbsp;&nbsp;
+          <span class="placeholder col-1"></span>
+        </h5>
+        <p class="subtitle">Jadwal</p>
+        <p class="placeholder-glow"><span class="placeholder col-5"></span></p>
+        <p class="placeholder-glow"><span class="placeholder col-5"></span></p>
+        <p class="subtitle">Pengajar</p>
+        <p class="placeholder-glow"><span class="placeholder col-5"></span></p>
+        <br>
+      </div>
+  </div>
+  <br>
+</div>
+<div id="content" class="card p-5">
+  <div class="matkul-title">
+    <h4 class="placeholder-glow"> <span class="placeholder" style="width: 200px;"></span> </h4>
+  </div>
+  <table class="table" aria-describedby="content">
+      <thead>
+        <tr>
+          <th style="width: 120px" scope="col">Kelas</th>
+          <th style="width: 180px" scope="col">Mahasiswa/Kapasitas</th>
+          <th style="width: 120px;" scope="col">Waktu</th>
+          <th style="width: 120px;" scope="col">Ruang</th>
+          <th style="width: 120px;" scope="col">Pengajar</th>
+          <th style="width: 120px;" scope="col">Pilih</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+          <td class="placeholder-glow"><span class="placeholder w-25"></span></td>
+          <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+          <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+          <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+          <td class="placeholder-glow"><span class="placeholder w-25"></span></td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+
+
+<div id="myModal" class="modal-view">
+
+  <!-- Modal content -->
+  <div id="modal-view-content">
+    <h4>Kelas dipilih:</h4>
+    <div id="modal-table">
+      <table aria-describedby="model-table">
+        <thead>
+          <tr>
+            <th style="width:150px; margin-right: 20px;" scope="col">Kelas</th>
+            <th style="width:120px;" scope="col">Waktu</th>
+            <th style="width:120px;" scope="col">Pengajar</th>
+            <th style="width:20px;" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+            <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+            <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div id="modal-pengecekan">
+      <h4>Pengecekan:</h4>
+      <span class="placeholder-glow"><span class="placeholder col-6"></span></span>
+      <span class="placeholder-glow"><span class="placeholder col-3"></span></span>
+      <span class="placeholder-glow"><span class="placeholder col-5"></span></span>
+    </div>
+    <div id="confirmation_button_set">
+      <button id="confirm-simpan" class="btn" disabled>Simpan</button>
+      <button id="batal-simpan" class="btn" disabled>Batal</button>
+    </div>
+  </div>
+
+</div>

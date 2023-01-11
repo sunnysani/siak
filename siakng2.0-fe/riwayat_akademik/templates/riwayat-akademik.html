@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %} Riwayat Akademik {% endblock title %}
+
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="{% static 'riwayat-akademik.css' %}" rel="stylesheet">
+<link href="{% static 'riwayat-akademik-placeholder.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block page_title %} Riwayat Akademik {% endblock %}
+{% block content %}
+<div class="container-xxl">
+  <div class="container-fluid">
+    <div class="accordion" id="accordion-irs">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="placeholder accordion-button collapsed" type="button">
+            <div class="w-100">
+              <div class="button-acc-term">
+                <div class="placeholder-glow"><span class="placeholder acc-term"></span></div>
+              </div>
+              <div class="button-acc-sks">
+                <div class="placeholder-glow"><span class="placeholder acc-sks"></span></div>
+              </div>
+            </div>
+          </button>
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modals">
+  <!-- Modals -->
+</div>
+
+<script src="{% static 'riwayat-akademik.js' %}"></script>
+{% endblock content %}

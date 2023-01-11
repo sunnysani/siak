@@ -1,0 +1,232 @@
+image: gradle:6.8.3-jdk11
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar" # Defines the location of the analysis task cache
+  GIT_DEPTH: "0" # Tells git to fetch all the branches of the project, required by the analysis task
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+  - export POSTGRES_STAGING_URL=$POSTGRES_STAGING_URL
+  - export POSTGRES_STAGING_USERNAME=$POSTGRES_STAGING_USERNAME
+  - export POSTGRES_STAGING_PASSWORD=$POSTGRES_STAGING_PASSWORD
+  - export POSTGRES_PROD_URL=$POSTGRES_PROD_URL
+  - export POSTGRES_PROD_USERNAME=$POSTGRES_PROD_USERNAME
+  - export POSTGRES_PROD_PASSWORD=$POSTGRES_PROD_PASSWORD
+  - export EMAIL_EMAIL=$EMAIL_EMAIL
+  - export EMAIL_PASSWORD=$EMAIL_PASSWORD
+
+stages:
+  - build
+  - test
+  - sonar
+  - deploy
+
+gradle-build:
+  image: gradle:latest
+  stage: build
+  script:
+    - gradle build
+  artifacts:
+    paths:
+      - build/libs/*.jar
+      - build/classes
+    expire_in: 2 weeks
+
+Test:
+  stage: test
+  script:
+    - gradle check
+    - gradle jacocoTestReport
+    - cat build/jacocoHtml/index.html | grep -o 'Total[^%]*%' | sed 's/<.*>/ /; s/Total/Jacoco Coverage Total:/'
+  artifacts:
+    when: always
+    paths:
+      - build/reports/jacoco/test/*
+      - build/reports/tests/test/*
+    expire_in: 1 week
+
+sonar-scanner-pbi-14:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id/
+      -Dsonar.login=5100ef26c0fd3f6cb791f296283f76250fcef545
+      -Dsonar.projectKey=siakng2.0-be-PBI-14
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**,**/security/JWTAuthenticationFilter.java
+  only:
+    - PBI-14-Ringkasan_IRS
+
+sonarScannerArya:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id/
+      -Dsonar.login=8768658dceb4cc462e094cd2e25e941d3041a712
+      -Dsonar.projectKey=siakngnewbe-mine
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**,**/config/**
+  only:
+    - PBI-13-Chat
+    - PBI-8-Notifikasi
+
+sonarScannerFadli:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id/
+      -Dsonar.login=4af0d21d06bbf97ca0e8fcf175aa48e74675c39b
+      -Dsonar.projectKey=siakng-be-fd-3
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**,**/config/**
+  only:
+    - PBI-1-pengisian_irs
+
+sonarScannerRafli:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id/
+      -Dsonar.login=ff6cb178839f325277cfcbf8789bf7b160163cec
+      -Dsonar.projectKey=siakng2-be-rafli 
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**,**/config/**
+  only:
+    - pbi-7-pembayaran
+
+sonar-scanner-iqbal:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.login=63e8b7faa99b29a849515e9d6df318b5c6f5b80b
+      -Dsonar.projectKey=resiak-pengumuman
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**
+  only:
+    - PBI-3-Pengumuman
+    - PBI-9-Ringkasan_Akademik
+    - PBI-10-Riwayat_Akademik
+
+sonarScannerDewangga:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.projectKey=sonar-scanner-dps
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.login=3e5b15a01f0679fd1c8b609469df2218ed68751d
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**,**/config/**
+  only:
+    - PBI-4-Pengecekan_IRS
+
+sonarScannerFausta:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.projectKey=siakng2-be
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.login=9931aaded983a544a80d29a200d80f78f6e19528
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**,**/config/**
+  only:
+    - response-output
+    - PBI-9-Ringkasan_Akademik
+
+sonarScannerSani:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.projectKey=siak-be-sani
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id
+      -Dsonar.login=93f832fc441fee3b0bae191fe4120e3eac8ceda2
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**,**/config/**
+  only:
+    - pbi-16-ongoing-upcoming-event
+
+sonar-scanner:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  stage: sonar
+  script:
+    - sonar-scanner
+      -Dsonar.qualitygate.wait=true
+      -Dsonar.qualitygate.timeout=300
+      -Dsonar.host.url=https://sonarqube.cs.ui.ac.id/
+      -Dsonar.login=$SONARQUBE_TOKEN
+      -Dsonar.projectKey=$SONARQUBE_PROJECT_KEY
+      -Dsonar.java.binaries=./build/classes/java/main/com/ppl/siakngnewbe
+      -Dsonar.java.libraries=./build/libs
+      -Dsonar.exclusions=**/test/**,**/config/**
+  only:
+    - staging
+    - master
+
+development:
+  image: ruby:2.4
+  stage: deploy
+  before_script:
+    - gem install faraday -v 1.9.3
+    - gem install dpl
+    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  script:
+    - dpl --provider=heroku --app=$DEV_HEROKU_APPNAME --api-key=$HEROKU_APIKEY
+    - export HEROKU_API_KEY=$HEROKU_APIKEY
+    - heroku run --app $DEV_HEROKU_APPNAME migrate
+  environment:
+    name: development
+    url: $DEV_HEROKU_APP_HOST
+  only:
+    - staging
+
+production:
+  image: ruby:2.4
+  stage: deploy
+  before_script:
+    - gem install faraday -v 1.9.3
+    - gem install dpl
+    - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  script:
+    - dpl --provider=heroku --app=$PROD_HEROKU_APPNAME --api-key=$HEROKU_APIKEY
+    - export HEROKU_API_KEY=$HEROKU_APIKEY
+    - heroku run --app $PROD_HEROKU_APPNAME migrate
+  environment:
+    name: production
+    url: $PROD_HEROKU_APP_HOST
+  only:
+    - master

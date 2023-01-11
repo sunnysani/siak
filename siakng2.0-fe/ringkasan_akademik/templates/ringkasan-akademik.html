@@ -1,0 +1,134 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %} Ringkasan Akademik - SiakNG {% endblock title %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<link href="{% static 'ringkasan_akademik/css/style.css' %}" rel="stylesheet">
+<link href="{% static 'ringkasan_akademik/css/placeholder.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block page_title %} Ringkasan Akademik {% endblock %}
+{% block content %}
+<div class="grid">
+    <div class="content data-mahasiswa">
+        <div class="header"><em class="fas fa-graduation-cap"></em> Data Mahasiswa</div>
+        <div class="py-1" id="photo-profile">
+            <div class="placeholder-glow"><div class="placeholder profile-picture"></div></div>
+        </div>
+        <div class="name py-2">
+            <div class="placeholder-glow"><div class="placeholder name"></div></div>
+        </div>
+        <div class="detail field py-1">
+            <span class="placeholder-glow"><span class="placeholder detail"></span></span>
+        </div>
+        <div class="py-2"></div>
+        <div class="flex-row">
+            <div class="ips field">
+                <span>IPS</span><span class="placeholder-glow"><span class="placeholder ips"></span></span>
+            </div>
+            <div class="ipk field">
+                <span>IPK</span><span class="placeholder-glow"><span class="placeholder ipk"></span></span>
+            </div>
+            <div class="sks-lulus field">
+                <span>SKS Lulus</span><span class="placeholder-glow"><span class="placeholder sks-lulus"></span></span>
+            </div>
+            <div class="total-mutu field">
+                <span>Total Mutu</span><span class="placeholder-glow"><span class="placeholder total-mutu"></span></span>
+            </div>
+        </div>
+        <div class="py-2"></div>
+        <div class="nama-pa field py-1">
+            <span class="placeholder-glow"><span class="placeholder nama-pa"></span></span>
+        </div>
+        <div class="nip-pa field py-1">
+            <span class="placeholder-glow"><span class="placeholder nip-pa"></span></span>
+        </div>
+        <div class="py-2"></div>
+        <div class="flex-row">
+            <div class="tahun-ajaran field">
+                <span>Tahun Ajaran</span><span class="placeholder-glow"><span class="placeholder tahun-ajaran"></span></span>
+            </div>
+            <div class="semester field">
+                <span>Semester</span><span class="placeholder-glow"><span class="placeholder semester"></span></span>
+            </div>
+            <div class="status-akademik field">
+                <span>Status Akademik</span><span class="placeholder-glow"><span class="placeholder status-akademik"></span></span>
+            </div>
+        </div>
+    </div>
+    <div class="content riwayat-akademik">
+        <div class="header" id="table-desc"><em class="fas fa-table"></em> Riwayat Akademik</div>
+        <div class="riwayat-table">
+            <table aria-describedby="table-desc">
+                <thead>
+                    <tr>
+                        <th scope="col">Periode</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="colgroup" colspan="4">Per Term/Semester</th>
+                        <th scope="colgroup" colspan="6">Kumulatif</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Tahun</th>
+                        <th scope="col">Term</th>
+                        <th scope="col">MK</th>
+                        <th scope="col">SKS A</th> <th scope="col">SKS L</th> <th scope="col">Mutu</th> <th scope="col">IP</th>
+                        <th scope="col">SKS A</th> <th scope="col">SKS L</th> <th scope="col">Mutu</th>
+                        <th scope="col">IPT</th> <th scope="col">IPK</th> <th scope="col">SKS Dpo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="colored">
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                        <td><p class="card-text placeholder-glow"><span class="placeholder w-100"></span></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="keterangan">
+            Keterangan <br>
+            <br>
+            <ul class="pl-3">
+                <li>MK = jumlah mata kuliah diikuti</li>
+                <li>SKS A = jumlah SKS yang diambil</li>
+                <li>SKS L = jumlah SKS yang lulus, yaitu yang nilainya ≥ C</li>
+                <li>SKS Dpo = jumlah SKS diperoleh dari masing-masing mata kuliah, yaitu jumlah SKS dari mata kuliah yang nilainya ≥ C</li>
+                <li>Mutu = jumlah SKS × bobot nilai</li>
+                <li>IPS = Indeks Prestasi Semester</li>
+                <li>IPT = Indeks Prestasi Total (termasuk SKS tidak lulus)</li> 
+                <li>IPK = Indeks Prestasi Kumulatif (hanya SKS lulus)</li>
+                <li>SKS dari perkuliahan dengan nilai I, BS, TK, DB atau Kosong tidak diperhitungkan dalam penghitungan SKS maupun IP</li>
+            </ul>
+        </div>
+    </div>
+    <div class="content prestasi-akademik">
+        <div class="header"><em class="fas fa-trophy"></em> Prestasi Akademik</div>
+        <div class="spinner-container">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div class="content statistik-nilai">
+        <div class="header"><em class="fas fa-chart-bar"></em> Statistik Nilai</div>
+        <div class="spinner-container">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'ringkasan_akademik/js/script.js' %}"></script>
+{% endblock content %}

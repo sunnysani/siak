@@ -1,0 +1,282 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+header .dropdown-item,
+nav .dropdown-item {
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+header a.dropdown-item:hover,
+nav a.dropdown-item:hover {
+  background-color: #c4c4c4;
+}
+
+header :not(a).dropdown-item:hover,
+nav :not(a).dropdown-item:hover {
+  background-color: transparent;
+}
+
+header .dropdown-toggle::after,
+nav .dropdown-toggle::after {
+  border: none;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f107";
+  transition: transform 0.5s;
+}
+
+header .dropdown-toggle.show::after,
+nav .dropdown-toggle.show::after {
+  transform: scaleY(-1);
+}
+
+header .dropdown-toggle,
+nav .dropdown-toggle {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+header .dropdown-menu-profile,
+nav .dropdown-menu {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  list-style-type: none;
+  padding: 6px;
+  margin: 0;
+  min-width: 0;
+  border-radius: 5px;
+  display: block;
+  overflow: hidden;
+  transition: max-height 0.5s, visibility 0.3s;
+  max-height: 0;
+  visibility: hidden;
+}
+
+header .dropdown-menu-profile.show,
+nav .dropdown-menu.show {
+  margin: 0;
+  transition: max-height 0.5s, visibility 0.3s;
+  max-height: 500px;
+  visibility: visible;
+}
+
+header {
+  font-family: Poppins;
+  background-color: #304d6c;
+  text-align: center;
+  height: 92px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .left-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  padding-left: 20px;
+}
+
+header .left-header img {
+  width: 48px;
+  height: 52px;
+}
+
+header .left-header p {
+  margin: 0;
+  padding-left: 10px;
+}
+
+header .left-header .text-siak {
+  font-weight: 700;
+  color: white;
+}
+
+header .left-header .text-ng {
+  font-weight: 700;
+  color: #f6d704;
+}
+
+header .right-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 30px;
+}
+
+header .right-header .notification {
+  position: relative;
+}
+
+header .right-header .notification i {
+  font-size: 24px;
+  color: white;
+}
+
+header .right-header #notification-count {
+  position: absolute;
+  text-align: center;
+  background: red;
+  color: white;
+  font-size: x-small;
+  border-radius: 50%;
+  right: -5px;
+  top: -5px;
+  height: 15px;
+  width: 15px;
+}
+
+header .right-header em {
+  color: white;
+  margin-left: 15px;
+}
+
+header .dropdown {
+  margin-left: 15px;
+}
+
+#dropdown-user {
+  color: white;
+}
+
+.dropdown-menu[aria-labelledby="dropdown-user"] {
+  right: 0;
+}
+
+/* Taken from: https://w3bits.com/animated-menu-icon-css/ */
+#dropdown-user.overflows {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+#dropdown-user.overflows:after,
+#dropdown-user.overflows:before,
+#dropdown-user.overflows div {
+  background-color: white;
+  border-radius: 3px;
+  content: "";
+  display: block;
+  height: 3px;
+  margin: 1px 0;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+#dropdown-user:not(.overflows):after {
+  margin-top: 1px;
+}
+
+#dropdown-user.overflows.show:before {
+  transform: translateY(5px) rotate(135deg);
+  transform-origin: 8px 1.25px;
+}
+
+#dropdown-user.overflows.show:after {
+  transform: translateY(-5px) rotate(-135deg);
+}
+
+#dropdown-user.overflows.show div {
+  transform: scale(0);
+}
+
+header .dropdown-menu-profile.overflows {
+  width: min(300px, 80vw);
+}
+
+header .dropdown-menu-profile:not(.overflows) li:nth-child(1),
+header .dropdown-menu-profile:not(.overflows) li:nth-child(2) {
+  display: none;
+}
+
+header .dropdown-menu-profile .nama-lengkap {
+  pointer-events: none;
+  word-wrap: break-word;
+  white-space: normal;
+  font-weight: 500;
+}
+
+nav {
+  font-family: Poppins;
+  margin-top: 20px;
+}
+
+nav .item {
+  margin-left: 40px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+nav > ul {
+  padding: 0;
+}
+
+nav a,
+nav a:hover {
+  text-decoration: none;
+  color: #3d3d3d;
+}
+
+nav .dropdown-toggle {
+  color: #3d3d3d;
+}
+
+.ruang-notifikasi {
+  width: 600px;
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
+.data-notif {
+  padding: 10px;
+}
+
+@media (max-width: 650px) {
+  .ruang-notifikasi {
+    width: 200px;
+  }
+
+  #isi_notif {
+    font-size: 13px;
+  }
+
+  #jam_notif {
+    font-size: 8px;
+  }
+}
+@media (max-width: 575px) {
+  header {
+    height: 69px;
+  }
+
+  header .left-header {
+    font-size: 24px;
+  }
+
+  header .left-header img {
+    width: 36px;
+    height: 39px;
+  }
+
+  header .right-header {
+    font-size: 14px;
+  }
+
+  #dropdown-user.overflows.show:before {
+    transform-origin: 8px 1.85px;
+  }
+}
+
+@media (max-width: 410px) {
+  nav .dropdown-menu[aria-labelledby="dropdown-irs"] {
+    margin-left: -84px;
+  }
+}

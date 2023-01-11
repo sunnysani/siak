@@ -1,0 +1,86 @@
+
+
+body {
+    font-family: 'Roboto';
+}
+
+.loader {
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+  /* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.row.content {
+    height: 950px;
+}
+
+.left-side {
+    background-color: #FFF7D9;
+}
+
+.right-side {
+    background-color: #304D6C;
+}
+
+.logo-ui {
+    height: 100px;
+}
+
+.login-form {
+    font-size: 15px;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#loginFormButton {
+    margin-top: 3%;
+    background-color: #2C4662;
+}
+
+#textUnderForm {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#kontakFakultas {
+    font-size: 20px;
+}
+
+#kalenderAkademik {
+    background-color: white;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#kalenderAkademikContainer {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#pelayananAkun {
+    background-color: white;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#pelayananAkunContainer {
+    padding-left: 15%;
+    padding-right: 15%;
+}

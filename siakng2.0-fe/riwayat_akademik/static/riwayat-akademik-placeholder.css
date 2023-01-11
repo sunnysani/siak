@@ -1,0 +1,31 @@
+.placeholder.acc-term {
+    width: 500px;
+}
+
+.placeholder.acc-sks {
+    width: 100px;
+}
+
+.placeholder.accordion-button {
+    cursor: wait;
+}
+
+.placeholder.accordion-button:after {
+    background-image: none;
+}
+
+.placeholder.accordion-button:after {
+    background-image: none;
+}
+
+@media only screen and (max-width: 650px) {
+    .placeholder.acc-term {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .placeholder.acc-sks {
+        width: 40%;
+    }
+}

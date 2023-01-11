@@ -1,0 +1,54 @@
+{% load static %}
+<div class="card pt-5 px-4" style="padding-bottom: 20px;">
+    <div class="row justify-content-center">
+        <div class="col-sm-5">
+            <h1 class="text-center" style="font-size: 30px">
+                <strong>Kelas Diambil</strong>
+            </h1>
+            <div id="noClassMessage" style="display: none;">
+                <div class="card m-3">
+                    <p class="text-center" style="font-size: 20px;"><strong>Belum ada kelas yang diambil.</strong></p>
+                </div>        
+            </div>
+            <div id="dropTableContent" class="table-responsive">
+                <table class="table table-borderless">
+                    <caption></caption>
+                    <thead>
+                    <tr id="table-head">
+                        <th id = "table-head-col" scope="col"><strong>Kelas</strong></th>
+                        <th id = "table-head-col" scope="col"><strong>Waktu</strong></th>
+                        <th id = "table-head-col" scope="col"><strong>Pengajar</strong></th>
+                        <th id = "table-head-col" scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+                        <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+                        <td class="placeholder-glow"><span class="placeholder w-100"></span></td>
+                        <td class="placeholder-glow"><span class="placeholder" style="width: 40px;"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+            <h1 class="text-center" style="font-size: 30px">
+                <strong>Pengecekan</strong>
+            </h1>
+            <div id="jumlahSks">Jumlah SKS:
+                <span class="placeholder-glow"><span class="placeholder" style="width: 30px;"></span></span>
+            </div>
+            <div id="pengecekanIrs">
+                <ul id="pengecekanItem" class="list-group list-group-flush">
+                    <li class="placeholder-glow list-group-item">
+                        <span class="placeholder-glow"><span class="placeholder col-6"></span></span>
+                        <span class="placeholder-glow"><span class="placeholder col-3"></span></span>
+                        <span class="placeholder-glow"><span class="placeholder col-5"></span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,196 @@
+body {
+    background-color: #F3F3F3;
+    font-family: 'Poppins';
+}
+
+.container-xxl {
+    padding: 25px;
+    color: #304D6C;
+}
+
+#title {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.accordion-body {
+    font-size: 20px;
+    padding: 1em 2em;
+}
+
+.button-acc-term {
+    font-size: 25px;
+    font-weight: 500;
+    padding-bottom: 5px;
+    padding-right: 10px;
+}
+
+.button-acc-sks {
+    font-size: 15px;
+}
+
+.accordion-button {
+    padding-right: 30px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #304D6C;
+}
+
+.accordion-button:focus {
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='darkblue' %3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    transform: rotate(-180deg) scale(1.5);
+}
+
+.accordion-button::after {
+    transform: scale(1.5); 
+}
+
+.matkul-title, .matkul-title-code {
+    word-wrap: break-word;
+}
+
+.matkul-title-code {
+    font-size: 15px;
+}
+
+.matkul-detail {
+    display: flex;
+    text-align: end;
+    flex-direction: row-reverse;
+    padding: 0;
+}
+
+.matkul-detail-detail, .matkul-detail-kosong {
+    padding-right: 0;
+}
+
+.matkul-detail-kosong {
+    font-style: italic;
+    transform: translateX(-5vw);
+}
+
+.matkul-detail-detail {
+    text-decoration: underline;
+}
+
+.matkul-detail-detail:hover {
+    cursor: pointer;
+    color: black;
+}
+
+sub {
+    font-size: 0.7em;
+}
+
+/* Modal Section */
+
+.buttons {
+    display: none;
+}
+
+.btn-close {
+    position: absolute; 
+    right: 1rem; 
+    top: 1rem;
+}
+
+.modal-header {
+    flex-direction: column;
+}
+
+.modal-header-mk {
+    font-size: 25px; 
+    font-weight: 500;
+    color: #304D6C;
+	text-align: center;
+}
+
+.modal-header-kode {
+    font-size: 20px;
+}
+
+.modal-nilai-huruf, .modal-nilai-akhir {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.table-modal {
+    width: 100%; 
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 5px;
+    border-style: hidden; 
+    overflow: hidden;
+    box-shadow: 0 0 0 0.7px black;
+    font-size: 15px;
+}
+
+.table-modal-head :first-child {
+    border-top-left-radius: 5px; 
+}
+
+.table-modal-head :last-child {
+    border-top-right-radius: 5px; 
+}
+
+.table-modal-head {
+    background-color: #304D6C; 
+    color: white;
+}
+
+.table-modal  th, .table-modal td {
+    padding: 10px 5px 10px 5px;
+}
+
+.table-nilai td {
+    word-wrap: break-word;
+}
+
+.no-component {
+    font-style: italic;
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 575px) {
+
+    .matkul-detail {
+        flex-direction: column-reverse;
+    }
+
+    .matkul-detail > * {
+        padding-right: 0;
+    }
+
+    .matkul-detail-kosong {
+        transform: none;
+    }
+
+    .matkul-detail-sks {
+        display: none;
+    }
+
+    .button-acc-sks, .matkul-title-code {
+        font-size: 3vw;
+    }
+
+    .accordion-body {
+        font-size: 3.5vw;
+    }
+
+    .button-acc-term {
+        font-size: 4.5vw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .table-modal td, .table-modal th {
+        width: auto;
+    }
+
+}

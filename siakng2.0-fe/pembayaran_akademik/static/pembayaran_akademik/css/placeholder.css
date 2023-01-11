@@ -1,0 +1,9 @@
+.placeholder.deadline {
+    width: 500px;
+}
+
+@media (max-width: 575px) {
+    .placeholder.deadline {
+        width: 200px;
+    }
+}

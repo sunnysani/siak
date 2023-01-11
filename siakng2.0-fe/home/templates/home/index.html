@@ -1,0 +1,97 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %} Home - SiakNG {% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'home/index.css' %}" />
+<link rel="stylesheet" href="{% static 'home/index-placeholder.css' %}" />
+{% endblock head %}
+
+
+{% block content %}
+<div class="summary">
+	<div class="text-center" id="photo">
+		<div class="placeholder-glow"><div class="placeholder"></div></div>
+	</div>
+	<div class="d-flex flex-column px-3 w-100">
+		<div id="nama-lengkap">
+			<p class="card-text placeholder-glow"><span class="placeholder nama-lengkap"></span></p>
+		</div>
+		<div class="detail">
+			<div class="data-diri flex-grow-1">
+				<div class="placeholder-glow"><strong>NPM: </strong><span class="placeholder npm"></span></div>
+				<div class="placeholder-glow"><strong>Prodi: </strong><span class="placeholder prodi"></span></div>
+				<div class="placeholder-glow"><strong>Semester: </strong><span class="placeholder semester"></span></div>
+			</div>
+			<button class="more-details-btn" data-bs-toggle="collapse" data-bs-target="#more-details" aria-expanded="false" aria-controls="more-details">
+				<span>More details</span><br><em class="fas fa-angle-down"></em>
+			</button>
+			<div class="collapse" id="more-details">
+				<div class="nilai">
+					<div class="item">
+						<strong>IPS</strong>
+						<div class="placeholder-glow"><span class="placeholder ips"></span></div>
+					</div>
+					<div class="item">
+						<strong>IPK</strong>
+						<div class="placeholder-glow"><span class="placeholder ipk"></span></div>
+					</div>
+					<div class="item">
+						<strong>SKS Lulus</strong>
+						<div class="placeholder-glow"><span class="placeholder sks-lulus"></span></div>
+					</div>
+					<div class="item">
+						<strong>Total Mutu</strong>
+						<div class="placeholder-glow"><span class="placeholder total-mutu"></span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="upcoming-ongoing">
+    <h1>Ongoing/Upcoming</h1>
+	<br>
+	<div id="list-cards">
+		<div class="spinner-container">
+			<div class="spinner-border text-secondary" role="status">
+			  <span class="visually-hidden">Loading...</span>
+			</div>
+		</div>	  
+	</div>
+</div>
+
+<div id="pengumuman">
+    <h1>Pengumuman</h1>
+	<div class="post">
+		<div class="placeholder-glow"><span class="placeholder post-title"></span></div>
+		<div class="placeholder-glow"><span class="placeholder post-info"></span></div>
+		<div class="placeholder-glow">
+			<span class="placeholder col-7"></span>
+			<span class="placeholder col-4"></span>
+			<span class="placeholder col-4"></span>
+			<span class="placeholder col-6"></span>
+			<span class="placeholder col-8"></span>
+			<span class="placeholder col-3"></span>
+			<span class="placeholder col-4"></span>
+			<span class="placeholder col-5"></span>
+			<span class="placeholder col-6"></span>
+			<span class="placeholder col-7"></span>
+			<span class="placeholder col-9"></span>
+			<span class="placeholder col-4"></span>
+			<span class="placeholder col-2"></span>
+			<span class="placeholder col-6"></span>
+			<span class="placeholder col-10"></span>
+		</div>
+	</div>
+</div>
+<div id="halaman-pengumuman">
+</div>
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'home/index.js' %}"></script>
+{% endblock script %}
+
+
+</html>

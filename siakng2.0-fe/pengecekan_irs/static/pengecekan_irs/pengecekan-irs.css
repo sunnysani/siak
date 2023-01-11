@@ -1,0 +1,122 @@
+.content {
+    text-align: center;
+}
+
+.container {
+    margin-right: 0px;
+    margin-left: 0px;
+    max-width: none;
+    font-family: Poppins;
+}
+
+#sks, #jadwal, #kapasitas, #prasyarat {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.container h2{
+    font-size: 24px;
+    font-weight: bold;
+    color: #3C5774;
+}
+
+.container h1{
+    font-size: 40px;
+    font-weight: bold;
+    color: #3C5774;
+}
+
+.container p {
+    font-size: 16px;
+}
+
+#sks p {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#kapasitas p {
+    font-size: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    text-align: left;
+}
+
+.no-error {
+    color: #148A2E;
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#kapasitas .no-error {
+    width: max-content;
+}
+
+.error {
+    color: #D74516;
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.notOk {
+    color: #E50505;
+}
+
+/* Jadwal Table */
+
+table {
+    width: 100%;
+}
+
+.table-prasyarat, .table-jadwal {
+    border: solid black 1px;
+    border-radius: 5px;
+}
+
+#prasyarat {
+    padding-bottom: 30px;
+}
+
+#th-pengecekan,td{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+#td-pengecekan{
+    padding: 10px;
+}
+
+th{
+    background-color: #304D6C;
+    color: white;
+}
+
+.lulus {
+    color: #148A2E;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.tidak-lulus {
+    color: #D74516;
+    padding: 10px;
+    font-weight: bold;
+}

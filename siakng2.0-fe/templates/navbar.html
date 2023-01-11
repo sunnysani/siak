@@ -1,0 +1,75 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'navbar/navbar.css' %}">
+<header>
+    <div class="left-header">
+        <img src="{% static 'img/logo-ui.png' %}" alt="Logo UI"></img>
+        <p class="text-siak">SIAK</h1>
+        <p class="text-ng">NG</h1>
+    </div>
+    <div class="right-header">
+        <div class="dropdown">
+			<a data-bs-toggle="dropdown"><em class="fas fa-bell" aria-hidden="true"></em></a>
+            <div class="nav-notif">
+
+			</div>
+			<ul class="dropdown-menu dropdown-menu-right ruang-notifikasi" aria-labelledby="dropdown-notification" role="menu">
+				<!-- Integrated -->
+				<div class="d-flex justify-content-between data-notif">
+					<div class="p-2 w-100">
+						<p id="isi_notif" class="placeholder-glow">
+							<span class="placeholder col-6"></span>
+							<span class="placeholder col-4"></span>
+							<span class="placeholder col-5"></span>
+						</p>
+					</div>
+  					<div class="p-2">
+						<p id="jam_notif" class="placeholder-glow" style="font-size: 12px; margin-inline: auto;">
+							<span class="placeholder" style="width: 60px;"></span>
+						</p>
+					</div>
+				</div>
+			</ul>
+        </div>
+		<div class="dropdown">
+			<div class="spinner-border spinner-border-sm text-light" role="status">
+				<span class="visually-hidden">Loading...</span>
+		  	</div>
+			<button id="dropdown-user" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static" hidden> </button>
+			<ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile" aria-labelledby="dropdown-user">
+				<li><div class="dropdown-item nama-lengkap"></div></li>
+				<li><hr class="dropdown-divider"></li>
+				<li><a class="dropdown-item" href="#" id="logoutButton">Logout</a></li>
+			</ul>
+		</div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li class="item"><a href="/">Home</a></li>
+        <li class="item">
+			<div class="dropdown">
+				<button id="dropdown-akademis" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Akademis</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdown-akademis">
+					<li><a class="dropdown-item" href="{% url 'ringkasan_akademik:ringkasan_akademik' %}">Ringkasan</a></li>
+					<li><a class="dropdown-item" href="{% url 'riwayat_akademik:riwayat_akademik' %}">Riwayat</a></li>
+					<li><a class="dropdown-item" href="{% url 'pembayaran_akademik:pembayaran_akademik' %}">Pembayaran</a></li>
+				</ul>
+			</div>
+        </li>
+        <li class="item">
+			<div class="dropdown">
+				<button id="dropdown-irs" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">IRS</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdown-irs" data-bs-popper="static">
+					<li><a class="dropdown-item" href="{% url 'ringkasan_irs:ringkasan' %}">Ringkasan</a></li>
+					<li><a class="dropdown-item" href="{% url 'pengecekan_irs:pengecekan_irs' %}">Pengecekan</a></li>
+					<li><a class="dropdown-item" href="{% url 'pengisian_irs:isi_irs' %}">Isi IRS</a></li>
+					<li><a class="dropdown-item" href="{% url 'pengisian_irs:add_irs' %}">Add IRS</a></li>
+					<li><a class="dropdown-item" href="{% url 'pengisian_irs:drop_irs' %}">Drop IRS</a></li>
+				</ul>
+			</div>
+        </li>
+    </ul>
+</nav>
+<script type="text/javascript" src="{% static 'navbar/navbar.js' %}"></script>

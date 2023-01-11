@@ -1,0 +1,68 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'jacoco'
+	id "org.sonarqube" version "3.0"
+}
+
+group = 'com.ppl'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-quartz'
+	implementation 'io.jsonwebtoken:jjwt-api:0.10.8'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.10.8'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.10.8'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'org.postgresql:postgresql'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.hamcrest:hamcrest:2.2'
+	implementation 'com.auth0:java-jwt:3.15.0'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.1'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+}
+
+bootJar {
+	archiveClassifier.set('boot')
+}
+
+jar {
+	archiveClassifier.set('')
+}
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		xml.enabled true
+		html.enabled true
+		html.destination file("${buildDir}/jacocoHtml")
+	}
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: ['**/*Application**'])
+		}))
+	}
+
+}

@@ -1,0 +1,26 @@
+.placeholder.name, .placeholder.nama-pa, .placeholder.nip-pa {
+    width: 250px;
+}
+
+.placeholder.detail {
+    width: 350px;
+}
+
+.placeholder.ips, .placeholder.ipk, .placeholder.sks-lulus,
+.placeholder.total-mutu, .placeholder.tahun-ajaran, .placeholder.status-akademik {
+    width: 30px;
+}
+
+.placeholder.semester {
+    width: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .placeholder.name, .placeholder.nama-pa, .placeholder.nip-pa {
+        width: 100px;
+    }
+
+    .placeholder.detail {
+        width: 150px;
+    }
+}

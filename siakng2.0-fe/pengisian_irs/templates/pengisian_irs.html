@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %} Pengisian IRS - SiakNG {% endblock title %}
+
+{% block head %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'pengisian_irs.css' %}">
+{% endblock head %}
+
+{% block page_title %} Pengisian IRS {% endblock %}
+{% block content %}
+<div class="container-fluid pb-5">
+  <div class="row content">
+    <div class="spinner-container">
+      <div class="spinner-border text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div id="showIsiIrs" style="display: none;">
+      {% include 'pengisian_data.html' %}
+    </div>
+    <div id="showError" style="display: none;">
+      <div class="card p-5" id="isi">
+        <div class="card" id="keterangan">
+          <div class="card-header" id="keterangan-judul">
+            Keterangan
+          </div>
+          <div class="card-body" id="keterangan-isi">
+            Anda tidak dapat mengisi IRS karena periode registrasi akademik belum dimulai atau sudah berakhir.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'pengisian_irs.js' %}"></script>
+{% endblock script %}

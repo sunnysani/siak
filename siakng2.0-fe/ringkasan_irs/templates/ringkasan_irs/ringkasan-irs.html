@@ -1,0 +1,182 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %} Ringkasan - IRS {% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'ringkasan_irs/css/ringkasan-irs.css' %}" />
+<link rel="stylesheet" href="{% static 'ringkasan_irs/css/ringkasan-irs-placeholder.css' %}" />
+{% endblock head %}
+
+{% block page_title %} Ringkasan IRS {% endblock %}
+{% block content %}
+<div class="container-xxl">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="card" id='card_detail_irs'>
+                    <div class="card-body">
+                        <h3 class="card-title">Detail IRS</h3>
+                        <div class="container">
+                            <div class="row" id="attribute_detail">
+                                <div class="col" id="attribute_title">
+                                    Status IRS
+                                </div>
+                                <div class="col data_status" id="status_irs">
+                                    <!-- UPDATE UNTUK INTEGRASI -->
+                                    <span class="placeholder-glow"><span class="placeholder status_irs"></span></span>
+                                </div>
+                            </div>
+                            <div class="row" id="attribute_detail">
+                                <div class="col data_status" id="attribute_title">
+                                    SKS Maksimum
+                                </div>
+                                <div class="col data_status" id="sksMaks">
+                                    <!-- UPDATE UNTUK INTEGRASI -->
+                                    <span class="placeholder-glow"><span class="placeholder sksMaks"></span></span>
+                                </div>
+                            </div>
+                            <div class="row" id="attribute_detail">
+                                <div class="col data_status" id="attribute_title">
+                                    Persetujuan IRS
+                                </div>
+                                <div class="col data_status" id="persIrs">
+                                    <!-- UPDATE UNTUK INTEGRASI -->
+                                    <span class="placeholder-glow"><span class="placeholder persIrs"></span></span>
+                                </div>
+                            </div>
+                            <div class="row" id="attribute_detail">
+                                <div class="col data_status" id="attribute_title">
+                                    IP Terakhir
+                                </div>
+                                <div class="col data_status" id="ipTerakhir">
+                                    <!-- UPDATE UNTUK INTEGRASI -->
+                                    <span class="placeholder-glow"><span class="placeholder ipTerakhir"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-6">
+                <div class="card" id='card_pengecekan_irs'>
+                    <div class="card-body pengecekan-irs">
+                        <h3 class="card-title">Pengecekan IRS</h3>
+                        <!-- UPDATE UNTUK INTEGRASI -->
+                        <div id="list-pengecekan">
+                            <div class="spinner-border text-secondary" role="status" style="width: 20px; height: 20px;"></div>
+                            <span class="text-secondary" style="font-size: 20px;"> Mengecek...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="card" id='card_pengecekan_irs'>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="card-title" style="margin-bottom: 30px;">Mata Kuliah Dipilih</h3>
+                    </div>
+                    <div class="float-end">
+                        <div class="d-flex flex-row mb-1">
+                            <div class="p-1" style="text-align: center;">
+                                <img src="{% static 'ringkasan_irs/img/table.png' %}" alt="logo-table" id="img-switch">
+                            </div>
+                            <div class="p-1" style="text-align: center;">
+                                <input type="checkbox" id="example"/>
+                                <label for="example" id="toggle-table" class="toggle-data">
+                                    <div class="slider"></div>
+                                </label>
+                            </div>
+                            <div class="p-1" style="text-align: center;">
+                                <img src="{% static 'ringkasan_irs/img/calendar.png' %}" alt="logo-calendar" id="img-switch">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="data-result">
+                    <div class="data-result-table">
+                        <div class="table-responsive tableIrsClass">
+                            <table class="w-100" aria-describedby="jadwalKuliah" id="tableIrs">
+                                <thead>
+                                    <tr>
+                                      <th scope="col" id="th-irs">No</th>
+                                      <th scope="col" id="th-irs">Nama MK</th>
+                                      <th scope="col" id="th-irs">SKS</th>
+                                      <th scope="col" id="th-irs">Nama Kelas</th>
+                                      <th scope="col" id="th-irs">Penyelenggara</th>
+                                      <th scope="col" id="th-irs">Jadwal</th>
+                                      <th scope="col" id="th-irs">Ruangan</th>
+                                      <th scope="col" id="th-irs">Pengajar</th>
+                                    </tr>
+                                </thead>
+                                <!-- UPDATE UNTUK INTEGRASI -->
+                                <tbody>
+                                    <tr>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                        <td id="td-irs">
+                                            <span class="placeholder-glow"><span class="placeholder w-100"></span></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="data-result-calendar" style="display: none;">
+                        <div class="content">
+                            <div class="calendar-base">
+                                <ul class="calendar-header">
+                                    <li>Jam</li>
+                                    <li>Senin</li>
+                                    <li>Selasa</li>
+                                    <li>Rabu</li>
+                                    <li>Kamis</li>
+                                    <li>Jumat</li>
+                                    <li>Sabtu</li>
+                                </ul>
+                                <div class="wrapper position-relative">
+                                    <div class="spinner-container">
+                                        <div class="spinner-border text-secondary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'ringkasan_irs/js/ringkasan-irs.js'%}"></script>
+{% endblock script %}

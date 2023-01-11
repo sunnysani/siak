@@ -1,0 +1,447 @@
+body {
+    background-color: #F3F3F3 !important;
+    font-family: Poppins;
+}
+
+#showIsiIrs {
+    padding: 0px;
+    position: relative;
+}
+
+#judul {
+    font-size: 40px;
+    font-weight: bold;
+    color: #304D6C;
+}
+
+/* General ------------------------------------------------- */
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+nobr {
+    white-space: nowrap
+}
+
+.invisible {
+    display: none;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.warning {
+    color: #DA1F1F;
+}
+
+/* Summary ------------------------------------------------- */
+
+#summary {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    position: sticky;
+    top: 0;
+    /* z-index: 999 is chat */
+    z-index: 998;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-height: 300px;
+    overflow-y: hidden;
+}
+
+#summary h4 {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+#class,
+#pengecekan {
+    display: block;
+    width: 420px;
+}
+
+#class-content {
+    max-height: 240px;
+    overflow-y: hidden;
+}
+
+#class thead,
+#myModal thead {
+    border-bottom: 1px solid black;
+}
+
+#class th,
+#myModal th {
+    padding-bottom: 10px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#class td,
+#myModal td {
+    padding-top: 10px;
+    font-size: 16px;
+    padding-right: 15px;
+}
+
+#class button {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 90%;
+    text-align: center;
+    background-color: #304D6C;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+#class button:hover,
+#class button:focus {
+    transform: scale(1.02);
+}
+
+/* Delete Button */
+#class td button,
+#myModal button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    transition: all 0.3s ease;
+}
+
+#class td button:hover,
+#class td button:focus {
+    transform: scale(1.2);
+}
+
+#jadwal-kosong {
+    font-style: italic;
+}
+
+#summary-pengecekan {
+    font-style: italic;
+    position: relative;
+    max-height: 200px;
+    overflow-y: hidden;
+}
+
+#pengecekan p {
+    color: #DA1F1F;
+    font-style: normal;
+}
+
+#pengecekan h5 {
+    text-align: left;
+}
+
+.fa-trash {
+    color: #DB3737;
+}
+
+#toggle-summary {
+    position: absolute;
+    bottom: 12px;
+    background: none;
+    color: #304D6C;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+#toggle-summary-svg {
+    transition: all 0.3s ease;
+    transform: rotate(180deg);
+}
+
+.responsive-dosen-table {
+    word-wrap: break-word;
+    max-width: 150px;
+}
+
+/* Modal view for submit button  --------------------------------*/
+
+.modal-view {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+}
+
+/* Modal Content */
+#modal-view-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+#modal-view-content li {
+    color: #DA1F1F;
+}
+
+#confirmation_button_set {
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+}
+
+#confirmation_button_set button {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 200px;
+    text-align: center;
+    background-color: #304D6C;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+}
+
+#confirmation_button_set button:hover,
+#confirmation_button_set button:focus {
+    transform: scale(1.02);
+}
+
+#modal-table table {
+    margin: auto;
+}
+
+#modal-pengecekan p {
+    color: #DA1F1F;
+}
+
+/* Content ------------------------------------------------- */
+
+#content {
+    margin-left: 150px;
+    margin-right: 150px;
+    border-radius: 10px;
+}
+
+.matkul-title {
+    display: flex;
+}
+
+.matkul-title h4 {
+    color: black;
+    font-weight: bold;
+}
+
+.info:hover div,
+.info:focus div {
+    display: block;
+}
+
+.info-content {
+    display: none;
+    position: absolute;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    width: 250px;
+    padding: 10px
+}
+
+.info-content p,
+.info-content ul {
+    margin-bottom: 0px;
+}
+
+.table {
+    margin-top: 5px;
+    text-align: center;
+}
+
+#content thead {
+    background-color: #304D6C;
+    color: white;
+    font-weight: 100;
+}
+
+#content th {
+    font-weight: 500;
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+#content td {
+    vertical-align: middle !important;
+}
+
+input {
+    width: 20px;
+    height: 20px;
+}
+
+.kapasitas-full,
+.kapasitas-banyak,
+.kapasitas-sedikit {
+    font-weight: bold;
+}
+
+.kapasitas-full {
+    color: #DA1F1F;
+}
+
+.kapasitas-sedikit {
+    color: #D7791C;
+}
+
+.kapasitas-banyak {
+    color: #0B8B56;
+}
+
+/* Mobile view */
+.mobile-card {
+    border: solid #304D6C;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.mobile-card-content {
+    margin-left: 50px;
+}
+
+.mobile-card h5 {
+    font-weight: bold;
+}
+
+.mobile-card h5 span {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.mobile-card input {
+    position: absolute;
+    left: 60px;
+    margin-top: 5px;
+}
+
+.mobile-card p {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-weight: 500;
+}
+
+/* Mobile Summary */
+#mobile-summary {
+    position: fixed;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    transform: translateX(2.5%);
+    bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #304D6C;
+    padding: 10px 10px;
+    border-radius: 10px;
+    z-index: 997;
+    color: white;
+}
+
+#mobile-summary-left {
+    text-align: left;
+    margin-left: 10px;
+}
+
+#mobile-summary-left h1 {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+#mobile-summary-left p {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+#mobile-summary-right {
+    text-align: right;
+    margin-right: 10px;
+}
+
+#simpan-mobile {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+@media only screen and (max-width: 1360px) {
+    #content {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #content {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    #summary {
+        display: none;
+    }
+
+    #content {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 920px) {
+
+    #content-mobile {
+        display: none;
+    }
+
+    #mobile-summary {
+        display: none;
+    }
+}

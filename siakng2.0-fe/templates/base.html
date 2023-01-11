@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+    let redirectUrl = location.origin;
+
+    if (localStorage.getItem("expiresAt") < Date.now()) {
+        localStorage.clear();
+    }
+
+    if (!localStorage.tokenRes) {
+        window.location = redirectUrl + "/main/authentication";
+    }
+    </script>
+    <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/id/thumb/0/0f/Makara_of_Universitas_Indonesia.svg/640px-Makara_of_Universitas_Indonesia.svg.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/fb1ce7db1a.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Base CSS + Font Configuration -->
+    <link rel="stylesheet" href="{% static 'base/base.css' %}">
+
+    <title>{% block title %}{% endblock %} | SiakNG</title>
+
+    {% block head %} {% endblock %}
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="page-title">
+        {% block page_title %} {% endblock %}
+    </div>
+    {% block content %} {% endblock %}
+    {% include 'chat.html' %}
+</body>
+
+{% block script %} {% endblock %}
+
+</html>

@@ -1,0 +1,41 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'chat/chat.css' %}">
+
+<div class="main-box">
+
+  <div class="main-box-2">
+ 
+    <div id="dosen-box">
+      
+    </div>
+
+    <div class="msg-box">
+      <img class="toggle" id="img-msg" onclick="toggle()" src="{% static 'chat/chat.png' %}" alt="logo-msg">
+      <div id="unread-cnt" style="display: none;">
+      </div>
+    </div>
+
+    <div class="conv-box">
+      <!-- LOOPING DATES AND MESSAGES -->
+        <table aria-describedby="listchat">
+          <th id="column-chat"></th>
+          <section class="conv-table">
+
+          </section>
+        </table>
+    </div>
+
+  </div>
+
+  <div class="send-box">
+    <div contenteditable="true" class="text-box"></div>
+    <div class="img-box">
+      <input type="image" src="{% static 'chat/send.png' %}" id="img-send" alt="logo-send" onclick="send()">
+    </div>
+  </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'chat/chat.js'%}"></script>
